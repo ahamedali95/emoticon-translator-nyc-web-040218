@@ -12,8 +12,14 @@ def load_library(file_path)
   new_hash
 end
 
-def get_japanese_emoticon
-  # code goes here
+def get_japanese_emoticon(hash, emoticon)
+  hash = load_library(YAML.load_file(file_path))
+  
+  hash["get_emoticon"].each do |western_emoticon, japanese_emoticon|
+    if emoticon == western_emoticon
+      return japanese_emoticon
+    end
+  end
 end
 
 def get_english_meaning
